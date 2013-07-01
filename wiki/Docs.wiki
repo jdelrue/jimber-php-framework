@@ -1,5 +1,31 @@
 =Jimber PHP Framework=
 ==Using Jimber PHP Framework==
+===SmartLibs===
+
+SmartLibs.php is a PHP file that should be included in any PHP file in the project. This is the file that handles further includes of libraries, Global variables, debugging settings and login checking. This file can be edited to the users needs.
+
+Some Global variables examples:
+{{{
+class GlobalVars {
+
+    static public $STARTPATH = "/website/"; //location of the website after domain eg. this for www.example.org/website/ *
+    static public $DRIVEPATH = "/var/www/website/"; //location of the website on the drive *
+    static public $RFBPATH = "lib/Jimber/"; //Where the Jimber framework is located*
+    static public $LOG = 1;
+    static public $DATAPATH = "lib/Jimber/Data/MySQL"; //where the data files are*
+    static public $SITEKEY = 'thisshouldbechanged'; // Password for security. Just change it to a secret*
+    static public $DATEFORMAT = 'd/m/Y'; //mose used dateformat
+}
+}}}
+
+The libadd function can include a library. Mostly 2 libs have to be included:
+{{{
+libadd("lib.Jimber");
+libadd("lib.Jimber.Data.MySQL");
+}}}
+
+This will basically look in the lib/Jimber  and lib/Jimber/Data/MySQL/ folder for a file require.php and include this one. This file has further include directives.
+
 ===Template engine===
 The template engine is used to seperate HTML and PHP code. It's short, simple and solid. A template file contains only html and looks as follows:
 {{{
@@ -201,23 +227,23 @@ Also, sorting is enabled. This makes column headers clickable, sorting also work
 ====Possible elements in DataGrids====
 At this moment following field types can be used:
 
- * Checkbox
- * Date
- * Datebox
- * Delete
- * Hidden
- * Image
- * LinkedText
- * SQLBox
- * Select
- * Text
- * Textarea
- * TextboxPassword
- * TextboxSuggest
- * Textpre
- * URL
- * Upload
- * WikiText*
+* Checkbox
+* Date
+* Datebox
+* Delete
+* Hidden
+* Image
+* LinkedText
+* SQLBox
+* Select
+* Text
+* Textarea
+* TextboxPassword
+* TextboxSuggest
+* Textpre
+* URL
+* Upload
+* WikiText*
 
 
 
