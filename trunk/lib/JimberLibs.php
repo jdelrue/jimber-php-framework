@@ -24,7 +24,7 @@ class GlobalVars {
 
     static public $STARTPATH = "/jimber/";
     static public $DRIVEPATH = "/var/www/jimber/";
-    static public $RFBPATH = "lib/Jimber/";
+    static public $JPFPATH = "lib/Jimber/";
     static public $SITEKEY = 'lskdfhsfiohsafioh3';
     static public $DATEFORMAT = 'd/m/Y';
     
