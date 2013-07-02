@@ -38,6 +38,16 @@ class GlobalVars {
     }
 
 }
+/*
+* Connect to the database here
+*/
+    require_once $_SERVER['DOCUMENT_ROOT'].GlobalVars::$STARTPATH."lib/jimber/Data/MySQL/SQL_Connector.php";
+    $dbname = "";
+    $sqlconfig = new SQL_Connector("hostname","login","password", "database");
+
+    $mysqli =$sqlconfig->Connect();
+
+
 
 /*
  * If the debug var is put before smartlibs is loaded, all errors and notices are shown.
