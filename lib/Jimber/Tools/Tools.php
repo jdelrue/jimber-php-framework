@@ -21,7 +21,7 @@ class Tools {
       } */
 
     public static function AreYouSure($redirect) {
-        return GlobalVars::$RFBPATH . "AreYouSure.php?redirect=" . URLEncrypter::Encrypt($redirect);
+        return GlobalVars::$JPFPATH . "AreYouSure.php?redirect=" . URLEncrypter::Encrypt($redirect);
     }
 
     public static function curPageURL() {
