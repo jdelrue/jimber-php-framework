@@ -8,8 +8,8 @@
     require_once("SQL_Connector.php");
 
     $dbname = "mng";
-    $sqlconfig = new SQL_Connector("hostname","login","password", "database");
+   // $sqlconfig = new SQL_Connector("hostname","login","password", "database");
 
     
-    $mysqli =$sqlconfig->Connect();
+   // $mysqli =$sqlconfig->Connect();
 ?>
