@@ -2,7 +2,7 @@
 //voorloping manueel auto-prepend
 #require_once('../../Lib/CMCMTAUTH/IDM_proginit.php');
 session_start();
-require_once 'Lib/Jimber/Error.php';
+require_once 'Lib/JPF/Error.php';
 require_once('Lib/CMCMT/etc/IDM.conf.php');
 require_once('Lib/CMCMT/etc/CMCMT.conf.php');
 require_once('Lib/CMCMTAUTH/Idm.class.php');

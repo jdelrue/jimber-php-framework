@@ -3,10 +3,10 @@
  * Imports trough SmartLibs
  */
 
-require_once '../../../JimberLibs.php';
+require_once '../../../JPFLibs.php';
 
-libadd("lib.Jimber.Data.MySQL");
-libadd("lib.Jimber");
+libadd("lib.JPF.Data.MySQL");
+libadd("lib.JPF");
 
 if(isset($_GET["type"]) && isset($_GET["ID"])){
 

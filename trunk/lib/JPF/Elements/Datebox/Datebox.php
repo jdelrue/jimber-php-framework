@@ -12,7 +12,7 @@ class Datebox extends GridElement {
     var $maxDate;
 
     public function DefineBlock($tpl) {
-        $tpl->AddFile("lib/Jimber/Elements/Datebox/Datebox.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Datebox/Datebox.tpl");
         $tpl->DefineBlock("DATEBOX");
     }
 
@@ -22,7 +22,7 @@ class Datebox extends GridElement {
 
         $tpl->setVars("ADDTODAY", "DBNAME", $field->dbname);
         $tpl->setVars("DATEBOX", "DBNAME", $field->dbname);
-        $tpl->setVars("ADDTODAY", "DATEPICKER", GlobalVars::$STARTPATH . "lib/Jimber/Elements/Datebox/DatePicker.php?FUID=" . $FUID);
+        $tpl->setVars("ADDTODAY", "DATEPICKER", GlobalVars::$STARTPATH . "lib/JPF/Elements/Datebox/DatePicker.php?FUID=" . $FUID);
         $tpl->setVars("ADDTODAY", "FUID", $FUID);
         $tpl->setVars("DATEBOX", "UID", $field->UID);
         $tpl->setVars("DATEBOX", "FUID", $FUID);

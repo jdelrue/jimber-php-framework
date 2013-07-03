@@ -7,7 +7,7 @@
 class URL extends GridElement{
 
     public function DefineBlock($tpl){
-        $tpl->AddFile("Lib/Jimber/Elements/URL/URL.tpl");
+        $tpl->AddFile("Lib/JPF/Elements/URL/URL.tpl");
         $tpl->DefineBlock("URL");
          $tpl->DefineBlock("POPURL");
     }

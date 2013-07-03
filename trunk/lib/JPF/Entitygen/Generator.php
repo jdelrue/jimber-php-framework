@@ -1,6 +1,6 @@
 <?
 
-require_once ("../../JimberLibs.php");
+require_once ("../../JPFLibs.php");
 
 $entities = Array();
 $handle = @fopen(GlobalVars::$DRIVEPATH.GlobalVars::$DATAPATH . "/DB.SQL", "r");

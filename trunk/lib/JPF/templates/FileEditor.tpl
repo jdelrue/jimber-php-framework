@@ -1,5 +1,5 @@
 <!-- BEGIN FORMBLOCK -->
-    <form action="Lib/Jimber/FileEditorPost.php" method="post" enctype="multipart/form-data">
+    <form action="Lib/JPF/FileEditorPost.php" method="post" enctype="multipart/form-data">
 	{{CONTENT}}
     </form>
 <!-- END FORMBLOCK -->

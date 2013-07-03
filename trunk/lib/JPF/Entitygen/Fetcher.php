@@ -1,8 +1,8 @@
 <?php
 $debug=1;
-require_once("../../JimberLibs.php");
+require_once("../../JPFLibs.php");
 
-libadd("lib.Jimber.Data.MySQL");
+libadd("lib.JPF.Data.MySQL");
 
 $myFile = GlobalVars::$DRIVEPATH.GlobalVars::$DATAPATH."/DB.SQL";
 $fh = fopen($myFile, 'w') or die("can't open file");

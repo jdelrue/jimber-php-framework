@@ -1,13 +1,13 @@
 <!-- BEGIN FORMBLOCK -->
 
-    <form action="Lib/Jimber/GridPost.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <form action="Lib/JPF/GridPost.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
 	{{CONTENT}}
     </form>
 <!-- END FORMBLOCK -->
 
 <!-- BEGIN TABLEBLOCK -->
     <!-- <span class="gridtitle">{{TITLE}} </span> -->
-    <table class="grid" summary="Table with data from database. Table build by Jimber">
+    <table class="grid" summary="Table with data from database. Table build by JPF">
         {{CONTENT}}
      </table>
 <!-- END TABLEBLOCK -->

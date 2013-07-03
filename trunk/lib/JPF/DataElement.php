@@ -48,12 +48,12 @@ class DataElement {
     }
 
     function AddElements($tpl) {
-        if ($handle = opendir(GlobalVars::$DRIVEPATH . 'lib/Jimber/Elements')) {
+        if ($handle = opendir(GlobalVars::$DRIVEPATH . 'lib/JPF/Elements')) {
             while (false !== ($file = readdir($handle))) {
                 if ($file != "." && $file != ".." && $file != ".svn") {
-                    require_once(GlobalVars::$DRIVEPATH . "lib/Jimber/Elements/$file/$file.php");
-                    if (file_exists(GlobalVars::$DRIVEPATH . "lib/Jimber/Elements/$file/Field.php")) {
-                        require_once(GlobalVars::$DRIVEPATH . "lib/Jimber/Elements/$file/Field.php");
+                    require_once(GlobalVars::$DRIVEPATH . "lib/JPF/Elements/$file/$file.php");
+                    if (file_exists(GlobalVars::$DRIVEPATH . "lib/JPF/Elements/$file/Field.php")) {
+                        require_once(GlobalVars::$DRIVEPATH . "lib/JPF/Elements/$file/Field.php");
                     }
                     $element = new $file;
                     $element->DefineBlock($tpl);

@@ -8,7 +8,7 @@ class TextboxPassword extends GridElement{
     var $updatable = true;
     var $md;
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/TextboxPassword/TextboxPassword.tpl");
+        $tpl->AddFile("lib/JPF/Elements/TextboxPassword/TextboxPassword.tpl");
         $tpl->DefineBlock("PASSWORD");
     }
     public function preBuild($field,$tpl){

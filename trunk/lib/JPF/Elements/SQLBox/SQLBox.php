@@ -8,7 +8,7 @@
 class SQLBox extends GridElement {
 
     public function DefineBlock($tpl) {
-        $tpl->AddFile("lib/Jimber/Elements/Text/Text.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Text/Text.tpl");
         $tpl->DefineBlock("TEXTONLYFIELD");
     }
 

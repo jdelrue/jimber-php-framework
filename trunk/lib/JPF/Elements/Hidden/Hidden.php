@@ -8,7 +8,7 @@ class Hidden extends GridElement{
    var $updatable = true;
   var $value;
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/Hidden/Hidden.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Hidden/Hidden.tpl");
         $tpl->DefineBlock("HIDDEN");
     }
     public function PreBuild($field,$tpl){

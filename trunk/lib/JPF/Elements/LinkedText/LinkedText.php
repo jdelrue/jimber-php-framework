@@ -8,7 +8,7 @@ class LinkedText extends GridElement{
 var $updatable = true;
 var $null = false;
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/LinkedText/LinkedText.tpl");
+        $tpl->AddFile("lib/JPF/Elements/LinkedText/LinkedText.tpl");
 
         $tpl->DefineBlock("OPTIONBLOCKL");
     }

@@ -11,10 +11,10 @@ $root = $_SERVER['DOCUMENT_ROOT'];
  * Imports trough SmartLibs
  */
 $debug=1;
-require_once '../JimberLibs.php';
+require_once '../JPFLibs.php';
 
-libadd("lib.Jimber.Data.MySQL");
-libadd("lib.Jimber");
+libadd("lib.JPF.Data.MySQL");
+libadd("lib.JPF");
 
 
 if ($handle = opendir('Elements')) {

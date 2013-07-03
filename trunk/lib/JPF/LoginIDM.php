@@ -6,7 +6,7 @@ class LoginIDM {
     }
 
     function BuildStandardLogin(){
-        $tpl = new Template("Lib/Jimber/templates/Login.tpl");
+        $tpl = new Template("Lib/JPF/templates/Login.tpl");
         $tpl->DefineBlock("LOGINBLOCK");
         $tpl->setVars("LOGINBLOCK", "POSTPAGE", "LoginPost.php");
         $hiddenHTM = $this->BuildSessionVars();

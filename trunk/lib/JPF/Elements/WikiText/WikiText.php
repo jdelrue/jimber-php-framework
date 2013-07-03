@@ -12,7 +12,7 @@
 class WikiText extends GridElement{
 
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/Text/WikiText.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Text/WikiText.tpl");
         $tpl->DefineBlock("TEXTONLYFIELD");
     }
     public function Build($tpl, $name,$value, $field, $element,$values){

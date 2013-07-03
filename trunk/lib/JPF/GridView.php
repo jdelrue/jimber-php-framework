@@ -29,7 +29,7 @@ class GridView {
 
     public function BuildStandardGridView($addPageNavigator = false,$sub=false){
 
-        $tpl = new Template("lib/Jimber/templates/StandardGrid.tpl");
+        $tpl = new Template("lib/JPF/templates/StandardGrid.tpl");
         $this->DefineBlocks($tpl);
         $sorting = false;
 

@@ -8,7 +8,7 @@
 class Image extends GridElement {
 
     public function DefineBlock($tpl) {
-        $tpl->AddFile("lib/Jimber/Elements/Image/Image.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Image/Image.tpl");
         $tpl->DefineBlock("IMAGEFIELD");
         $tpl->DefineBlock("LINKIMAGEFIELD");
         $tpl->DefineBlock("POPUPIMAGEFIELD");

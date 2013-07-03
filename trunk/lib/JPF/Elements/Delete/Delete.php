@@ -10,7 +10,7 @@
 class Delete { // extends GridElement
 
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/Delete/Delete.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Delete/Delete.tpl");
         $tpl->DefineBlock("DELETE");
 
     }
@@ -18,7 +18,7 @@ class Delete { // extends GridElement
        
         $tpl->setVars("DELETE","TYPE", $element->entityType);
         $tpl->setVars("DELETE","ID",$element->ID);
-                $tpl->setVars("DELETE","DELETEHANDLER",GlobalVars::$STARTPATH."lib/Jimber/Elements/Delete/Delete_handler.php");
+                $tpl->setVars("DELETE","DELETEHANDLER",GlobalVars::$STARTPATH."lib/JPF/Elements/Delete/Delete_handler.php");
         if(strpos($field->postback,"http")>0){
         $tpl->setVars("DELETE","PB",  base64_encode(GlobalVars::$STARTPATH.$field->postback));
         }else{
