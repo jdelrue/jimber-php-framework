@@ -1,5 +1,5 @@
-=Jimber PHP Framework=
-==Using Jimber PHP Framework==
+=Jimber PHP Framework (JPF)=
+==Using JPF==
 ===SmartLibs===
 
 SmartLibs.php is a PHP file that should be included in any PHP file in the project. This is the file that handles further includes of libraries, Global variables, debugging settings and login checking. This file can be edited to the users needs.
@@ -66,10 +66,14 @@ Will echo the block. Echo works fine but this is more controlled and adjustable.
 
 Some interesting things:
 
- * Blocks can be concatenated 
+* Blocks can be concatenated 
+{{{
  (block1->ParseBlock(blockname).block2->ParseBlock(blockname2)
- * Blocks can be set as vars for other blocks,
+}}}
+* Blocks can be set as vars for other blocks
+{{{
  (block1->setVars(blockname, varname,block2->ParseBlock(blockname2))
+}}}
 
 ====Example====
 
@@ -105,12 +109,12 @@ require_once("lib/SmartLibs.php");
 libadd("lib.Jimber");
 libadd("lib.Jimber.Data.MySQL");
 
-$tpl = new Template("testing/templates/desktop.tpl");
+$tpl = new Template("index.tpl");
 $tpl->DefineBlock("PAGEBLOCK");
 $tpl->DefineBlock("DIVEXAMPLE");
 $tpl->setVars("DIVEXAMPLE", "VAR", "and something else");
 $tpl->setVars("PAGEBLOCK", "MORECONTENT", $tpl->parseBlock("DIVEXAMPLE"));
-$html = $tpl->ParseBlock("DESKTOP");
+$html = $tpl->ParseBlock("PAGEBLOCK");
 $tpl->Show($html);
 
 ?>
@@ -121,9 +125,9 @@ $tpl->Show($html);
 The entity generator will generate a very simple entity class for each table in the database. This class will extend the abstract Entity class which will provide the most functions. Currently only support for MySQL is provided. Support for other databases like PostgreSQL can easily be added.
 
 The entity generator consists of following files:
- * Fetcher.php: Fetches the database structure
- * Generator.php: Generates the entity classes
- * Entity.php: Provides functionality
+* Fetcher.php: Fetches the database structure
+* Generator.php: Generates the entity classes
+* Entity.php: Provides functionality
 
 To use the entity generator simply surf to Fetcher.php. The only requirement is that the Data directory is writeable by the webserver. 
 
@@ -245,6 +249,200 @@ At this moment following field types can be used:
  * Upload
  * WikiText*
 
+====Linkthrough forms====
 
+Datagrids are fast and easy to make but not very flexible. For this reason, a Form can be handled as a LinkThrough element. In this case it will just post data to another page instead of editing or inserting directly in the database. A simple example:
+
+Posting page:
+{{{
+$fieldsAddDongle = Array();
+$fieldsAddDongle[0] = new Field("Textbox", "name", "Your name:");
+$linkTrForm = new Form($fieldsAddDongle, "", true, true);
+$linkTrForm->linktrough = "handling.php";
+
+$linkTrFormHtm = $licextForm->BuildStandardForm();
+}}}
+
+Handling page:
+
+{{{
+echo $_SESSION['linktroughresult']['name'];
+}}}
+
+This requires a handling page but is very flexible and there is more data control.
 
 ===Tools===
+
+
+
+==Making a basic website with JPF==
+
+===Checkout the code===
+The easiest way to get JPF is by checking out the SVN repo. 
+{{{
+svn checkout https://jimber-php-framework.googlecode.com/svn/trunk/lib 
+}}}
+
+===Create your database tables===
+
+Now it's time to create some database content. Start with the datastructure. For example there is a database containing users and a table with all the rooms in a building and what user is responsible for it.
+{{{
+
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `ID` int(50) NOT NULL AUTO_INCREMENT,
+  `roomNumber` varchar(50) NOT NULL,
+  `userID` int(50) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+}}}
+
+===Modify the config===
+Modify the config setting the required variables and connecting to the database. This is all done in JimberLibs.php
+
+{{{
+/*
+ * Add vars that will be globally used in your project here. Or extend
+ * the class in an included file.
+ * JimberLibs manager is part of Jimber framework
+ */
+
+class GlobalVars {
+
+    static public $STARTPATH = "/jimbertestWebsite/";
+    static public $DRIVEPATH = "/var/www/jimbertestWebsite/";
+    static public $JPFPATH = "lib/Jimber/";
+    static public $SITEKEY = 'justakeythatnooneknows';
+    static public $DATEFORMAT = 'd/m/Y';
+    
+    private static $debug;
+
+    public static function getDebug() {
+        return self::$debug;
+    }
+    public static function setDebug($debug){
+         self::$debug = $debug;
+    }
+
+}
+/*
+* Connect to the database here
+*/
+    require_once $_SERVER['DOCUMENT_ROOT'].GlobalVars::$STARTPATH."lib/Jimber/Data/MySQL/SQL_Connector.php";
+
+    $sqlconfig = new SQL_Connector("localhost","root","root", "jpftest");
+
+    $mysqli =$sqlconfig->Connect();
+
+}}}
+
+===Generate the entities===
+Surf to jimbertestWebsite/lib/JimberEntityGen.php, click on generate entities. It should say "done". After this open the SQL_Entities-ng.php file in the data directory. It should look like this.
+{{{
+<?
+class rooms extends Entity {
+	 var $ID;
+	 var $roomNumber;
+	 var $userID;
+	 var $primaryKeys = array("ID");
+	var $auto_increment = array("ID");
+function getClass() { return __CLASS__; }
+}
+class users extends Entity {
+	 var $ID;
+	 var $name;
+	 var $password;
+	 var $primaryKeys = array("ID");
+public static function getClass() { return __CLASS__; }
+}
+?>
+}}}
+
+At any time, when the database structure has been modified this should be repeated. Be aware that the Data folder should be writable by the webserver. This is of course best done on a development machine, not on the public webserver :]
+
+===Create the templates===
+
+To get some HTML content on the screen it is always the best idea to create a template. Avoid any HTML straight from PHP. So this could be the content of your main page, index.tpl:
+
+{{{
+ <!-- BEGIN DIVEXAMPLE -->
+  <div class="example"> <p> Lorem ipsum something {{VAR}} </p></div>
+ <!-- END DIVEXAMPLE -->
+
+ <!-- BEGIN PAGEBLOCK -->
+ <!doctype html>
+ <html lang="en">
+     <head>
+         <meta charset="utf-8" />
+         <title>Some title</title>
+    
+     </head>
+     <body>
+          <p> some text </p>
+          {{MORECONTENT}}
+     </body>
+ </html>
+
+ <!-- END PAGEBLOCK -->
+
+}}}
+
+Next the index.php page is created. This will put everything together and show some data:
+
+{{{
+<?
+$debug=1;
+require_once("lib/JimberLibs.php");
+
+libadd("lib.Jimber");
+libadd("lib.Jimber.Data.MySQL");
+$tpl = new Template("index.tpl");
+$tpl->DefineBlock("PAGEBLOCK");
+$tpl->DefineBlock("DIVEXAMPLE");
+
+
+
+if(isset($_GET['insert'])){
+        $user = new users();
+
+        $user->name = "Jack Daniels";
+        $user->password = "drunk";
+        $user->Add();
+
+        $otheruser = new users();
+
+        $otheruser->name = "Coca Cola";
+        $otheruser->password = "sober";
+        $otheruser->Add();
+
+        $room = new rooms();
+        $room->roomNumber = 7;
+        $room->userID=1;
+        $room->Add();
+}
+
+$fields = Array();
+
+$fields[0] = new Field("Text", "name", "Name");
+
+$users = Users::Select();
+
+$grid = new Grid($fields,$users,false);
+
+
+$tpl->setVars("DIVEXAMPLE", "VAR", $grid->BuildStandardGrid(true));
+$tpl->setVars("PAGEBLOCK", "MORECONTENT", $tpl->parseBlock("DIVEXAMPLE"));
+$html = $tpl->ParseBlock("PAGEBLOCK");
+$tpl->Show($html);
+
+?>
+}}}
+
+First surf to index.php?insert=1 to insert some data. Then surf to index.php, it will show the freshly inserted data in a minimal datagrid.
