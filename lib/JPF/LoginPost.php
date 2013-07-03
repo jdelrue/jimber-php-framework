@@ -6,9 +6,9 @@ $root = $_SERVER['DOCUMENT_ROOT'];
  * Imports trough SmartLibs
  */
 $debug = 1;
-require_once '../JimberLibs.php';
+require_once '../JPFLibs.php';
 
-libadd("lib.Jimber.Data.MySQL");
+libadd("lib.JPF.Data.MySQL");
 
 $table = $_SESSION["table"];
 $loginField = $_SESSION["loginf"];

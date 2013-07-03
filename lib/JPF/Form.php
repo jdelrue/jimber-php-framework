@@ -44,7 +44,7 @@ class Form extends DataElement {
     function BuildStandardForm($addPageNavigator = false, $sub = false) {
 
         $UniqueFormID=Tools::random_string(5);
-        $tpl = new Template("lib/Jimber/templates/StandardForm.tpl");
+        $tpl = new Template("lib/JPF/templates/StandardForm.tpl");
      
         $this->DefineBlocks($tpl);
         $this->AddElements($tpl);
@@ -103,16 +103,16 @@ class Form extends DataElement {
                 $tpl->setVars("FORMBLOCK", "CODE", $validators); //Add validator code
             }
             $tpl->setVars("FORMBLOCK", "CONTENT", $table . $extra);
-            $tpl->setVars("FORMBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/Jimber/GridPost.php");
+            $tpl->setVars("FORMBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/JPF/GridPost.php");
             $tpl->setVars("FORMBLOCK", "UID", $UniqueFormID);
             if(isset($this->class)){
                         $tpl->setVars("FORMBLOCK", "CLASS", $this->class);
             }
             if ($this->insert || isset($this->linktrough)) {
                 if (isset($this->linktrough)) { // A linktrough form will POST to another page
-                    $tpl->setVars("FORMBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/Jimber/GridPostLinkTrough.php");
+                    $tpl->setVars("FORMBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/JPF/GridPostLinkTrough.php");
                 } else {
-                    $tpl->setVars("FORMBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/Jimber/GridPostAdd.php");
+                    $tpl->setVars("FORMBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/JPF/GridPostAdd.php");
                 }
             }
             return $tpl->ParseBlock("FORMBLOCK");

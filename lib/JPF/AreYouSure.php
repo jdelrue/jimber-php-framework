@@ -1,14 +1,14 @@
 <?php
 $debug=1;
-require_once '../JimberLibs.php';
+require_once '../JPFLibs.php';
 
 
-libadd("lib.Jimber");
+libadd("lib.JPF");
 
 
 $redirect = URLEncrypter::Decrypt($_GET['redirect']);
 
-$tpl = new Template("lib/Jimber/templates/AreYouSure.tpl");
+$tpl = new Template("lib/JPF/templates/AreYouSure.tpl");
 
 $tpl->DefineBlock("SUREBLOCK");
 $tpl->SetVars("SUREBLOCK", "REDIRECT", $redirect);

@@ -16,10 +16,10 @@ $debug=1;
  * Imports trough SmartLibs
  */
 $debug=1;
-require_once '../JimberLibs.php';
+require_once '../JPFLibs.php';
 
-libadd("lib.Jimber.Data.MySQL");
-libadd("lib.Jimber");
+libadd("lib.JPF.Data.MySQL");
+libadd("lib.JPF");
 requireLogin(0);
 
 if ($handle = opendir('Elements')) {

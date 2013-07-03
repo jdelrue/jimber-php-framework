@@ -8,7 +8,7 @@ class Select extends GridElement{
 var $updatable = true;
 var $null = false;
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/Select/Select.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Select/Select.tpl");
         $tpl->DefineBlock("SELECT");	
         $tpl->DefineBlock("OPTIONBLOCK");
     }

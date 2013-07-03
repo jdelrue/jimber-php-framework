@@ -7,7 +7,7 @@
 
 <!-- BEGIN TABLEBLOCK -->
     <span class="gridtitle">{{TITLE}} </span>
-    <table class="grid" summary="Table with data from database. Table build by Jimber" ID="{{ID}}">
+    <table class="grid" summary="Table with data from database. Table build by JPF" ID="{{ID}}">
         {{CONTENT}}
      </table>
 <!-- END TABLEBLOCK -->

@@ -10,7 +10,7 @@ class TextboxSuggest extends GridElement {
     var $updatable = true;
 
     public function DefineBlock($tpl) {
-        $tpl->AddFile("lib/Jimber/Elements/TextboxSuggest/TextboxSuggest.tpl");
+        $tpl->AddFile("lib/JPF/Elements/TextboxSuggest/TextboxSuggest.tpl");
         $tpl->DefineBlock("TEXTBOXSUGGEST");
         $tpl->DefineBlock("SUGGESTSCRIPT");
     }

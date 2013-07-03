@@ -15,9 +15,9 @@ class Login {
     }
 
     function BuildStandardLogin(){
-        $tpl = new Template("lib/Jimber/templates/Login.tpl");
+        $tpl = new Template("lib/JPF/templates/Login.tpl");
         $tpl->DefineBlock("LOGINBLOCK");
-        $tpl->setVars("LOGINBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/Jimber/LoginPost.php");
+        $tpl->setVars("LOGINBLOCK", "POSTPAGE", GlobalVars::$STARTPATH."lib/JPF/LoginPost.php");
         $hiddenHTM = $this->BuildSessionVars();
         $parsed = $tpl->ParseBlock("LOGINBLOCK");
         $parsed = $parsed.$hiddenHTM;

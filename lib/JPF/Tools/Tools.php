@@ -13,7 +13,7 @@ class Tools {
         return rand(0, $max);
     }
     /* public static function AreYouSure($redirect) {
-      $tpl = new Template("lib/Jimber/templates/AreYouSure.tpl");
+      $tpl = new Template("lib/JPF/templates/AreYouSure.tpl");
       $tpl->DefineBlock("SUREBLOCK");
       $tpl->SetVars("SUREBLOCK", "REDIRECT", $redirect);
       $htm = $tpl->ParseBlock("SUREBLOCK");

@@ -15,7 +15,7 @@ class FileEditor {
 
     }
     public function BuildStandardFileEditor(){
-        $tpl = new Template("Lib/Jimber/templates/FileEditor.tpl");
+        $tpl = new Template("Lib/JPF/templates/FileEditor.tpl");
         $tpl->DefineBlock("FORMBLOCK");
         $tpl->DefineBlock("TXTAREA");
         $content = file_get_contents($this->file);

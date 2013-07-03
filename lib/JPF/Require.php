@@ -30,12 +30,12 @@ require_once($includePath . "/Security/URLEncrypter.php");
 /*
  * This will load all custom element fields, they all MUST be named Field.php
  */
-if ($handle = opendir(GlobalVars::$DRIVEPATH . 'lib/Jimber/Elements')) {
+if ($handle = opendir(GlobalVars::$DRIVEPATH . 'lib/JPF/Elements')) {
     while (false !== ($file = readdir($handle))) {
         if ($file != "." && $file != ".." && $file != ".svn") {
 
-            if (file_exists(GlobalVars::$DRIVEPATH . "lib/Jimber/Elements/$file/Field.php")) {
-                require_once(GlobalVars::$DRIVEPATH . "lib/Jimber/Elements/$file/Field.php");
+            if (file_exists(GlobalVars::$DRIVEPATH . "lib/JPF/Elements/$file/Field.php")) {
+                require_once(GlobalVars::$DRIVEPATH . "lib/JPF/Elements/$file/Field.php");
             }
         }
     }

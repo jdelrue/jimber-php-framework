@@ -11,7 +11,7 @@ class Upload extends GridElement {
     var $name;
 
     public function DefineBlock($tpl) {
-        $tpl->AddFile("lib/Jimber/Elements/Upload/Upload.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Upload/Upload.tpl");
         $tpl->DefineBlock("UPLOADBLOCK");
         $tpl->DefineBlock("UPLOADBLOCKMULTI");
     }

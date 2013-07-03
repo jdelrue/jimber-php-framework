@@ -44,7 +44,7 @@ class Grid extends DataElement {
 
     private function PrivateBuildStandardGrid($addPageNavigator = false, $sub = false) {
         $UniqueFormID = Tools::random_string(5);
-        $tpl = new Template("lib/Jimber/templates/StandardGrid.tpl");
+        $tpl = new Template("lib/JPF/templates/StandardGrid.tpl");
 
         $this->DefineBlocks($tpl);
         $this->AddElements($tpl);
@@ -62,7 +62,7 @@ class Grid extends DataElement {
 
 
         $tpl->setVars("FORMBLOCK", "UID", $UniqueFormID);
-        $tpl->setVars("FORMBLOCK", "ACTION", GlobalVars::$STARTPATH . "lib/Jimber/GridPost.php");
+        $tpl->setVars("FORMBLOCK", "ACTION", GlobalVars::$STARTPATH . "lib/JPF/GridPost.php");
 
         $dataRows = $this->BuildDataRows($tpl, $numberOfFields, $UniqueFormID);
         $numberOfValues = $this->totalCollectionSize;

@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-require_once("../../../JimberLibs.php");
-libadd("lib.Jimber");
-libadd("lib.Jimber.Data.MySQL");
+require_once("../../../JPFLibs.php");
+libadd("lib.JPF");
+libadd("lib.JPF.Data.MySQL");
 
  $month = DateTools::getCurrentoMnth();
 if (isset($_GET['calmonthCal2'])) {

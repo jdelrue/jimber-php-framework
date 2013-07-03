@@ -42,7 +42,7 @@ class Calendar {
         $this->year = $year;
         $this->eventsArray = Array();
 
-        $this->tpl = new Template("lib/Jimber/templates/Calendar.tpl");
+        $this->tpl = new Template("lib/JPF/templates/Calendar.tpl");
 
         $this->DefineBlocks($this->tpl);
     }

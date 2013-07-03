@@ -8,7 +8,7 @@ class Textbox extends GridElement{
    var $updatable = true;
   
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/Textbox/Textbox.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Textbox/Textbox.tpl");
         $tpl->DefineBlock("TEXTBOX");
     }
     public function Build($tpl, $name,$value, $field, $element, $values){

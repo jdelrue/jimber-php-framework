@@ -7,7 +7,7 @@
 class Checkbox extends GridElement{
    var $updatable = true;
     public function DefineBlock($tpl){
-        $tpl->AddFile("lib/Jimber/Elements/Checkbox/Checkbox.tpl");
+        $tpl->AddFile("lib/JPF/Elements/Checkbox/Checkbox.tpl");
         $tpl->DefineBlock("CHECKBOX");
         $tpl->DefineBlock("TEXTFIELD");
                $tpl->DefineBlock("READONLY");
