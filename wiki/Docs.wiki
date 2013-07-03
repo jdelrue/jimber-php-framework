@@ -10,9 +10,9 @@ class GlobalVars {
 
     static public $STARTPATH = "/website/"; //location of the website after domain eg. this for www.example.org/website/ *
     static public $DRIVEPATH = "/var/www/website/"; //location of the website on the drive *
-    static public $RFBPATH = "lib/Jimber/"; //Where the Jimber framework is located*
+    static public $RFBPATH = "lib/JPF/"; //Where JPF is located*
     static public $LOG = 1;
-    static public $DATAPATH = "lib/Jimber/Data/MySQL"; //where the data files are*
+    static public $DATAPATH = "lib/JPF/Data/MySQL"; //where the data files are*
     static public $SITEKEY = 'thisshouldbechanged'; // Password for security. Just change it to a secret*
     static public $DATEFORMAT = 'd/m/Y'; //mose used dateformat
 }
@@ -20,11 +20,11 @@ class GlobalVars {
 
 The libadd function can include a library. Mostly 2 libs have to be included:
 {{{
-libadd("lib.Jimber");
-libadd("lib.Jimber.Data.MySQL");
+libadd("lib.JPF");
+libadd("lib.JPF.Data.MySQL");
 }}}
 
-This will basically look in the lib/Jimber  and lib/Jimber/Data/MySQL/ folder for a file require.php and include this one. This file has further include directives.
+This will basically look in the lib/JPF  and lib/JPF/Data/MySQL/ folder for a file require.php and include this one. This file has further include directives.
 
 ===Template engine===
 The template engine is used to seperate HTML and PHP code. It's short, simple and solid. A template file contains only html and looks as follows:
@@ -106,8 +106,8 @@ Then it is possible to build the PHP file like this
 <?
 require_once("lib/SmartLibs.php");
 
-libadd("lib.Jimber");
-libadd("lib.Jimber.Data.MySQL");
+libadd("lib.JPF");
+libadd("lib.JPF.Data.MySQL");
 
 $tpl = new Template("index.tpl");
 $tpl->DefineBlock("PAGEBLOCK");
@@ -146,7 +146,7 @@ This is an example of a generated entity, from the user table in a database:
 }}}
 
 ===Datagrids===
-Forms and grids with Jimber are easy and efficient. Forms in Jimer are used to present, modify or insert data in the database. To use Forms or Grids, it's important to first understand the fields system.
+Forms and grids with JPF are easy and efficient. Forms in Jimer are used to present, modify or insert data in the database. To use Forms or Grids, it's important to first understand the fields system.
 
 ====Fields====
 {{{
@@ -273,14 +273,14 @@ This requires a handling page but is very flexible and there is more data contro
 
 ===Tools===
 
-TBW
+
 
 ==Making a basic website with JPF==
 
 ===Checkout the code===
 The easiest way to get JPF is by checking out the SVN repo. 
 {{{
-svn checkout https://jimber-php-framework.googlecode.com/svn/trunk/lib 
+svn checkout https://JPF-php-framework.googlecode.com/svn/trunk/lib 
 }}}
 
 ===Create your database tables===
@@ -305,20 +305,20 @@ CREATE TABLE IF NOT EXISTS `users` (
 }}}
 
 ===Modify the config===
-Modify the config setting the required variables and connecting to the database. This is all done in JimberLibs.php
+Modify the config setting the required variables and connecting to the database. This is all done in JPFLibs.php
 
 {{{
 /*
  * Add vars that will be globally used in your project here. Or extend
  * the class in an included file.
- * JimberLibs manager is part of Jimber framework
+ * JPFLibs manager is part of JPF framework
  */
 
 class GlobalVars {
 
     static public $STARTPATH = "/jimbertestWebsite/";
     static public $DRIVEPATH = "/var/www/jimbertestWebsite/";
-    static public $JPFPATH = "lib/Jimber/";
+    static public $JPFPATH = "lib/JPF/";
     static public $SITEKEY = 'justakeythatnooneknows';
     static public $DATEFORMAT = 'd/m/Y';
     
@@ -344,7 +344,7 @@ class GlobalVars {
 }}}
 
 ===Generate the entities===
-Surf to jimbertestWebsite/lib/JimberEntityGen.php, click on generate entities. It should say "done". After this open the SQL_Entities-ng.php file in the data directory. It should look like this.
+Surf to jimbertestWebsite/lib/JPFEntityGen.php, click on generate entities. It should say "done". After this open the SQL_Entities-ng.php file in the data directory. It should look like this.
 {{{
 <?
 class rooms extends Entity {
@@ -399,10 +399,10 @@ Next the index.php page is created. This will put everything together and show s
 {{{
 <?
 $debug=1;
-require_once("lib/JimberLibs.php");
+require_once("lib/JPFLibs.php");
 
-libadd("lib.Jimber");
-libadd("lib.Jimber.Data.MySQL");
+libadd("lib.JPF");
+libadd("lib.JPF.Data.MySQL");
 $tpl = new Template("index.tpl");
 $tpl->DefineBlock("PAGEBLOCK");
 $tpl->DefineBlock("DIVEXAMPLE");
