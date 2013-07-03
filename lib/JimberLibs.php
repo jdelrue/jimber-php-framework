@@ -22,10 +22,11 @@ session_start();
 
 class GlobalVars {
 
-    static public $STARTPATH = "/jimber/";
-    static public $DRIVEPATH = "/var/www/jimber/";
+    static public $STARTPATH = "/jimbertestWebsite/";
+    static public $DRIVEPATH = "/var/www/jimbertestWebsite/";
+    static public $DATAPATH = "lib/Jimber/Data/MySQL"; //where the data files are*
     static public $JPFPATH = "lib/Jimber/";
-    static public $SITEKEY = 'lskdfhsfiohsafioh3';
+    static public $SITEKEY = 'justakeythatnooneknows';
     static public $DATEFORMAT = 'd/m/Y';
     
     private static $debug;
@@ -41,13 +42,11 @@ class GlobalVars {
 /*
 * Connect to the database here
 */
-    require_once $_SERVER['DOCUMENT_ROOT'].GlobalVars::$STARTPATH."lib/jimber/Data/MySQL/SQL_Connector.php";
-    $dbname = "";
-    $sqlconfig = new SQL_Connector("hostname","login","password", "database");
+    require_once $_SERVER['DOCUMENT_ROOT'].GlobalVars::$STARTPATH."lib/Jimber/Data/MySQL/SQL_Connector.php";
+
+    $sqlconfig = new SQL_Connector("localhost","root","root", "jpftest");
 
     $mysqli =$sqlconfig->Connect();
-
-
 
 /*
  * If the debug var is put before smartlibs is loaded, all errors and notices are shown.
@@ -80,23 +79,6 @@ function requireLogin($level) {
         }
     }
 }
-/*
- * this can be removed in PHP 5.4 enviroment. 
- */
- function hex2bin($hexstr)
-    {
-        $n = strlen($hexstr);
-        $sbin="";  
-        $i=0;
-        while($i<$n)
-        {      
-            $a =substr($hexstr,$i,2);          
-            $c = pack("H*",$a);
-            if ($i==0){$sbin=$c;}
-            else {$sbin.=$c;}
-            $i+=2;
-        }
-        return $sbin;
-    }
+
 
 ?>

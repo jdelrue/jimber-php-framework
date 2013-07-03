@@ -18,6 +18,7 @@ function get_structure()
 
 $tables = mysql_list_tables(SQL_Connector::getDBName());
      $SQL = Array();
+
 while ($td = mysql_fetch_array($tables))
 {
 
