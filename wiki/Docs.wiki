@@ -125,9 +125,9 @@ $tpl->Show($html);
 The entity generator will generate a very simple entity class for each table in the database. This class will extend the abstract Entity class which will provide the most functions. Currently only support for MySQL is provided. Support for other databases like PostgreSQL can easily be added.
 
 The entity generator consists of following files:
-* Fetcher.php: Fetches the database structure
-* Generator.php: Generates the entity classes
-* Entity.php: Provides functionality
+ * Fetcher.php: Fetches the database structure
+ * Generator.php: Generates the entity classes
+ * Entity.php: Provides functionality
 
 To use the entity generator simply surf to Fetcher.php. The only requirement is that the Data directory is writeable by the webserver. 
 
