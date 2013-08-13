@@ -1,6 +1,6 @@
 <?php
 $debug=1;
-require_once("../../JPFLibs.php");
+require_once("../../../JPFLibs.php");
 
 libadd("lib.JPF.Data.MySQL");
 
