@@ -58,7 +58,7 @@ abstract class Entity {
                 if ($i < func_num_args()) {
 
                     if ($this->checkRealColumn($value) && is_string($value)) {
-                  //      echo "**$value <br>";
+                        //echo "**$value <br>";
                         $this->$value = func_get_arg($i);
                     }
                 }
@@ -135,7 +135,8 @@ abstract class Entity {
 
         $mysqli = SQL_Connector::getMysqliInstance();
         $sqlstr = "insert into `" . $this->entityType . "`(" . $this->GetNonNullFields() . ")" . " VALUES(" . $this->GetValues() . ")";
-   //     echo $sqlstr;
+        echo $sqlstr;
+
         if (!$mysqli->query($sqlstr) && GlobalVars::getDebug()) {
             echo $mysqli->error;
         }

@@ -1,17 +1,11 @@
 <?php
 
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 /*
  * Imports trough SmartLibs
  */
 $debug=1;
-require_once '../JPFLibs.php';
+require_once '../../JPFLibs.php';
 
 libadd("lib.JPF.Data.MySQL");
 libadd("lib.JPF");

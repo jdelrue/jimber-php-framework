@@ -25,10 +25,12 @@ while ($record = mysql_fetch_object($sql)) {
 if ($MD5 && $passwd == md5($_POST["password"])) {
 
     $_SESSION["user"] = $_POST["login"];
-        $_SESSION["userid"] = $record -> ID;
+        $_SESSION["userid"] = $userid;
+     //   echo "userid is: ". $userid;
     $expire = time() + 60 * 60 * 24 * 30;
     setcookie("user", $_SESSION["user"], $expire, GlobalVars::$STARTPATH);
-    header("Location:" . $_SESSION["pb"]);
+    setcookie("userid", $_SESSION["userid"], $expire, GlobalVars::$STARTPATH);
+   header("Location:" . $_SESSION["pb"]);
 
 } else if (!$MD5 && $passwd == $_POST["password"]) {
     $_SESSION["user"] = $_POST["login"];

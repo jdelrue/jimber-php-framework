@@ -11,12 +11,12 @@
  */
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-$debug=1;
+
 /*
  * Imports trough SmartLibs
  */
 $debug=1;
-require_once '../JPFLibs.php';
+require_once '../../JPFLibs.php';
 
 libadd("lib.JPF.Data.MySQL");
 libadd("lib.JPF");
@@ -44,11 +44,7 @@ $i = 0;
 
 
 foreach ($_POST as $post => $value) {
-    $uidUsed = strpos($post, "UID"); //This is bad! Checkboxes are only sent when checked so 
-    //accompanied by a hidden field that has the samen name but UID added the difference can be made. Find better solution
 
-
-    $post = str_replace("UID", "", $post);
 
     if (substr($post, 0, 3) == "b64") {
         $base64String = substr($post, 3);
@@ -57,18 +53,17 @@ foreach ($_POST as $post => $value) {
         $pass = unserialize($Arr);
 
         $gridElement = $pass->GridElement;
-        if (!$uidUsed) {
-            $value = $gridElement->preUpdate($value);
-        }
+      
+        $value = $gridElement->preUpdate($value);
 
-        //echo $value.":".$pass->currentValue."<br>";
+      //  echo $pass->dbname.":".$value.":".$pass->currentValue."<br>";
         
         if ($value != "" && $value != $pass->currentValue) { // This if makes only update statements for adjusted values
             $UpdateArr[$pass->tableType][$pass->ID][$pass->dbname] = array($value, $gridElement);
         }
     }
 }
-
+//var_dump($UpdateArr);
 /* * ******* EXTRACT METHOD ************ */
 $statements = Array();
 $string = "";   
@@ -103,7 +98,7 @@ foreach ($UpdateArr as $Type => $IDArr) {
 for ($i = 0; $i < count($statements); $i++) {
 
         $worked = mysql_query($statements[$i]) or die ( mysql_error( ) );
-  // echo $statements[$i];
+   echo $statements[$i];
 }
 
 
