@@ -15,10 +15,9 @@ class Checkbox extends GridElement{
     }
     public function Build($tpl, $name,$value, $field, $element, $values){
             $tpl->setVars("CHECKBOX","CHECKED","");
-         
             if($value == 1){
-         
-                $tpl->setVars("CHECKBOX","CHECKED","CHECKED");
+  
+                $tpl->setVars("CHECKBOX","CHECKED","checked=\"checked\"");
             }
             $tpl->setVars("CHECKBOX","DISABLED","");
             if($field->disabled){
@@ -41,7 +40,7 @@ class Checkbox extends GridElement{
     }
       public function preUpdate($value){
           
-        return 1;
+        return $value;
      }
 }
 ?>

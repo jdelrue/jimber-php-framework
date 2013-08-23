@@ -1,9 +1,10 @@
 <?php
 /*
  * Imports trough SmartLibs
+ @TODO: SECURITY????
  */
 
-require_once '../../../JPFLibs.php';
+require_once '../../../../JPFLibs.php';
 
 libadd("lib.JPF.Data.MySQL");
 libadd("lib.JPF");
