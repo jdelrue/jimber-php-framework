@@ -78,7 +78,7 @@ abstract class Entity {
             $orderstr = $order->BuildOrder();
             $sqlstr = "select * from ($sqlstr) as t ORDER BY" . $orderstr;
         }
-
+       
         $record = "";
         $sqlstr .= " " . $limitor;
         $sql = mysql_query($sqlstr) or die(mysql_error());
@@ -92,6 +92,7 @@ abstract class Entity {
                 $i += 1;
             }
         }
+
         return $ObjectRows;
     }
 
@@ -135,7 +136,7 @@ abstract class Entity {
 
         $mysqli = SQL_Connector::getMysqliInstance();
         $sqlstr = "insert into `" . $this->entityType . "`(" . $this->GetNonNullFields() . ")" . " VALUES(" . $this->GetValues() . ")";
-        echo $sqlstr;
+        //echo $sqlstr;
 
         if (!$mysqli->query($sqlstr) && GlobalVars::getDebug()) {
             echo $mysqli->error;
@@ -165,7 +166,18 @@ abstract class Entity {
         $list = substr_replace($list, "", -1);
         return $list;
     }
-
+    public function GetRawObject(){
+    	
+        $object = new stdClass();
+        foreach ($this->fields as $key => $value) {
+            if ($this->checkRealColumn($value)) {
+            	
+              $object->$value = $this->$value;
+            }
+        }
+        return $object;
+    
+    }
     private function GetNonNullFields() {
         $values = get_object_vars($this);
         $list = "";
